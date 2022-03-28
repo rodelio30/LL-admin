@@ -1,3 +1,21 @@
+<?php 
+
+date_default_timezone_set("Asia/Manila");
+session_start();
+if(!isset($_SESSION['logged'])){
+  header("location: public.php");
+}
+include ('include/connect.php');
+$id=$_SESSION['id'];
+
+$query=mysqli_query($conn,"select id,type from users where id='$id'")or die ("query 1 incorrect.......");
+list($id,$type)=mysqli_fetch_array($query);
+
+if($type=='student'){
+  header("location: student.php");
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,9 +28,9 @@
 	<meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
 	<link rel="preconnect" href="https://fonts.gstatic.com">
-	<link rel="shortcut icon" href="img/icons/icon-48x48.png" />
+		<link rel="shortcut icon" href="img/icons/clsu-logo.png" />
 
-	<link rel="canonical" href="https://demo-basic.adminkit.io/pages-profile.html" />
+	<link rel="canonical" href="https://demo-basic.adminkit.io/pages-profile.php" />
 
 	<title>Profile | AdminKit Demo</title>
 
@@ -24,8 +42,8 @@
 	<div class="wrapper">
 		<nav id="sidebar" class="sidebar js-sidebar">
 			<div class="sidebar-content js-simplebar">
-				<a class="sidebar-brand" href="index.html">
-          <span class="align-middle">AdminKit</span>
+				<a class="sidebar-brand" href="index.php">
+          <span class="align-middle">Language and Literature e-Learning</span>
         </a>
 
 				<ul class="sidebar-nav">
@@ -34,19 +52,19 @@
 					</li>
 
 					<li class="sidebar-item">
-						<a class="sidebar-link" href="index.html">
+						<a class="sidebar-link" href="index.php">
               <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
             </a>
 					</li>
 
 					<li class="sidebar-item active">
-						<a class="sidebar-link" href="pages-profile.html">
+						<a class="sidebar-link" href="pages-profile.php">
               <i class="align-middle" data-feather="user"></i> <span class="align-middle">Profile</span>
             </a>
 					</li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="pages-sign-in.html">
+					<!-- <li class="sidebar-item">
+						<a class="sidebar-link" href="pages-sign-in.php">
               <i class="align-middle" data-feather="log-in"></i> <span class="align-middle">Sign In</span>
             </a>
 					</li>
@@ -61,9 +79,9 @@
 						<a class="sidebar-link" href="pages-blank.html">
               <i class="align-middle" data-feather="book"></i> <span class="align-middle">Blank</span>
             </a>
-					</li>
+					</li> -->
 
-					<li class="sidebar-header">
+					<!-- <li class="sidebar-header">
 						Tools & Components
 					</li>
 
@@ -95,9 +113,9 @@
 						<a class="sidebar-link" href="icons-feather.html">
               <i class="align-middle" data-feather="coffee"></i> <span class="align-middle">Icons</span>
             </a>
-					</li>
+					</li> -->
 
-					<li class="sidebar-header">
+					<!-- <li class="sidebar-header">
 						Plugins & Addons
 					</li>
 
@@ -112,19 +130,8 @@
               <i class="align-middle" data-feather="map"></i> <span class="align-middle">Maps</span>
             </a>
 					</li>
-				</ul>
+				</ul> -->
 
-				<div class="sidebar-cta">
-					<div class="sidebar-cta-content">
-						<strong class="d-inline-block mb-2">Upgrade to Pro</strong>
-						<div class="mb-3 text-sm">
-							Are you looking for more components? Check out our premium version.
-						</div>
-						<div class="d-grid">
-							<a href="upgrade-to-pro.html" class="btn btn-primary">Upgrade to Pro</a>
-						</div>
-					</div>
-				</div>
 			</div>
 		</nav>
 
@@ -136,7 +143,7 @@
 
 				<div class="navbar-collapse collapse">
 					<ul class="navbar-nav navbar-align">
-						<li class="nav-item dropdown">
+<!-- <li class="nav-item dropdown">
 							<a class="nav-icon dropdown-toggle" href="#" id="alertsDropdown" data-bs-toggle="dropdown">
 								<div class="position-relative">
 									<i class="align-middle" data-feather="bell"></i>
@@ -200,8 +207,8 @@
 									<a href="#" class="text-muted">Show all notifications</a>
 								</div>
 							</div>
-						</li>
-						<li class="nav-item dropdown">
+						</li> -->
+						<!-- <li class="nav-item dropdown">
 							<a class="nav-icon dropdown-toggle" href="#" id="messagesDropdown" data-bs-toggle="dropdown">
 								<div class="position-relative">
 									<i class="align-middle" data-feather="message-square"></i>
@@ -267,23 +274,24 @@
 									<a href="#" class="text-muted">Show all messages</a>
 								</div>
 							</div>
-						</li>
+						</li> -->
 						<li class="nav-item dropdown">
 							<a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-bs-toggle="dropdown">
                 <i class="align-middle" data-feather="settings"></i>
               </a>
 
 							<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
-                <img src="img/avatars/avatar.jpg" class="avatar img-fluid rounded me-1" alt="Charles Hall" /> <span class="text-dark">Charles Hall</span>
+                <!-- <img src="img/avatars/avatar.jpg" class="avatar img-fluid rounded me-1" alt="Charles Hall" /> -->
+								 <span class="text-dark">Your Email!</span>
               </a>
 							<div class="dropdown-menu dropdown-menu-end">
-								<a class="dropdown-item" href="pages-profile.html"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
+								<a class="dropdown-item" href="pages-profile.php"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
 								<a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="pie-chart"></i> Analytics</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="index.html"><i class="align-middle me-1" data-feather="settings"></i> Settings & Privacy</a>
+								<a class="dropdown-item" href="index.php"><i class="align-middle me-1" data-feather="settings"></i> Settings & Privacy</a>
 								<a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="help-circle"></i> Help Center</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="#">Log out</a>
+								<a class="dropdown-item" href="include/sign-out.php">Log out</a>
 							</div>
 						</li>
 					</ul>
@@ -295,9 +303,6 @@
 
 					<div class="mb-3">
 						<h1 class="h3 d-inline align-middle">Profile</h1>
-						<a class="badge bg-dark text-white ms-2" href="upgrade-to-pro.html">
-      Get more page examples
-  </a>
 					</div>
 					<div class="row">
 						<div class="col-md-4 col-xl-3">
@@ -477,7 +482,7 @@
 					<div class="row text-muted">
 						<div class="col-6 text-start">
 							<p class="mb-0">
-								<a class="text-muted" href="https://adminkit.io/" target="_blank"><strong>AdminKit</strong></a> &copy;
+								<a class="text-muted" href="https://adminkit.io/" target="_blank"><strong>CLSU</strong></a> &copy;
 							</p>
 						</div>
 						<div class="col-6 text-end">
