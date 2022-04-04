@@ -29,7 +29,7 @@
           }
         }else{
             echo "<script type='text/javascript'>alert('Username or Password was incorrect.');
-            document.location='login.php' </script>";
+            document.location='pages-sign-in.php' </script>";
             // header("location: login.php");
 
           }
@@ -91,7 +91,7 @@
 									<form method="POST">
 										<div class="mb-3">
 											<label class="form-label">Email</label>
-											<input class="form-control form-control-lg" type="email" name="email" placeholder="Enter your email" />
+											<input class="form-control form-control-lg" type="email" name="email" placeholder="Enter your email" autofocus/>
 										</div>
 										<div class="mb-3">
 											<label class="form-label">Password</label>
@@ -124,7 +124,7 @@
 		</div>
 	</main>
 
-	<script src="js/app.js"></>
+	<script src="js/app.js"></script>
 </body>
 
 </html>
